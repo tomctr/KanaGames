@@ -1,8 +1,18 @@
 <template>
-  <div>
-    <v-container>{{currentKana}}</v-container>
-    <v-text-field v-on:keyup.enter="submit" v-model="answer"></v-text-field>
-  </div>
+  <v-card width="250" height="350">
+    <v-card-title>
+      <v-slide-x-transition mode="out-in">
+        <v-card :key="key" width="200" height="200">
+          <v-row class="fill-height" justify="center" align="center" no-gutters>
+            <div class="display-4">{{currentKana}}</div>
+          </v-row>
+        </v-card>
+      </v-slide-x-transition>
+    </v-card-title>
+    <v-card-text>
+      <v-text-field v-on:keyup.enter="submit" v-model="answer" class="centered-input"></v-text-field>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -12,7 +22,8 @@ export default {
     answer: "",
     sequence: null,
     currentKana: "",
-    idxKana: null
+    idxKana: null,
+    key: 0
   }),
   props: {
     size: { type: Number }
@@ -30,6 +41,8 @@ export default {
       if (this.sequence.length > 0) {
         this.idxKana = this.sequence.shift();
         this.setCurrentKana();
+              console.log("reponse : " + characters[this.idxKana].romaji);
+        this.key++;
       } else {
         this.$emit("end-game");
       }
@@ -106,3 +119,9 @@ var characters = [
   { romaji: "n", hiragana: "ん", katakana: "ン" }
 ];
 </script>
+
+<style>
+.centered-input input {
+  text-align: center;
+}
+</style>
