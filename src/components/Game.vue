@@ -1,9 +1,9 @@
 <template>
-  <div class="fill-height">
+  <v-container class="pa-0 ma-0">
     <PreGame v-on:start-game="startGame" v-show="showPreGame" />
     <KanaCard v-if="!showPreGame && !isEndGame" :size="examSize" v-on:end-game="endGame"/>
     <EndGame v-show="isEndGame"/>
-  </div>
+  </v-container>
 </template>
 
 <script>

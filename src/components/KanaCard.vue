@@ -3,7 +3,7 @@
     <v-card-title>
       <v-slide-x-transition mode="out-in">
         <v-card :key="key" width="200" height="200">
-          <v-row class="fill-height" justify="center" align="center" no-gutters>
+          <v-row justify="center" align="center" class="fill-height" no-gutters>
             <div class="display-4">{{currentKana}}</div>
           </v-row>
         </v-card>
