@@ -1,21 +1,26 @@
 <template>
   <v-app>
-    <v-container class="pa-0 ma-0">
-      <v-content>
-        <Game />
+    <Navbar />
+    <div class="app-background fill-height">
+      <v-content class="fill-height">
+        <v-container class="pa-0 fill-height">
+          <Game />
+        </v-container>
       </v-content>
-    </v-container>
+    </div>
   </v-app>
 </template>
 
 <script>
 import Game from "./components/Game";
+import Navbar from "./components/Navbar";
 
 export default {
   name: "App",
 
   components: {
-    Game
+    Game,
+    Navbar
   },
 
   data: () => ({
@@ -23,3 +28,9 @@ export default {
   })
 };
 </script>
+
+<style scoped>
+.app-background {
+  background-color: #fcfbf6;
+}
+</style>

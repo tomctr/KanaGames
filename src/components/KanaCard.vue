@@ -1,13 +1,15 @@
 <template>
   <v-card width="250" height="350">
-    <v-card-title>
-      <v-slide-x-transition mode="out-in">
-        <v-card :key="key" width="200" height="200">
-          <v-row justify="center" align="center" class="fill-height" no-gutters>
-            <div class="display-4">{{currentKana}}</div>
-          </v-row>
-        </v-card>
-      </v-slide-x-transition>
+    <v-card-title no-gutters>
+      <v-row justify="center">
+        <v-slide-x-transition mode="out-in">
+          <v-card :key="key" width="200" height="200">
+            <v-row justify="center" align="center" class="fill-height" no-gutters>
+              <div class="display-4">{{currentKana}}</div>
+            </v-row>
+          </v-card>
+        </v-slide-x-transition>
+      </v-row>
     </v-card-title>
     <v-card-text>
       <v-text-field v-on:keyup.enter="submit" v-model="answer" class="centered-input"></v-text-field>
@@ -41,7 +43,7 @@ export default {
       if (this.sequence.length > 0) {
         this.idxKana = this.sequence.shift();
         this.setCurrentKana();
-              console.log("reponse : " + characters[this.idxKana].romaji);
+        console.log("reponse : " + characters[this.idxKana].romaji);
         this.key++;
       } else {
         this.$emit("end-game");

@@ -1,8 +1,10 @@
 <template>
-  <v-container class="pa-0 ma-0">
-    <PreGame v-on:start-game="startGame" v-show="showPreGame" />
-    <KanaCard v-if="!showPreGame && !isEndGame" :size="examSize" v-on:end-game="endGame"/>
-    <EndGame v-show="isEndGame"/>
+  <v-container class="pa-0 ma-0 fill-height">
+    <v-row class="fill-height" justify="center" align="center">
+      <PreGame v-on:start-game="startGame" v-show="showPreGame" />
+      <KanaCard v-if="!showPreGame && !isEndGame" :size="examSize" v-on:end-game="endGame" />
+      <EndGame v-show="isEndGame" />
+    </v-row>
   </v-container>
 </template>
 
@@ -31,7 +33,7 @@ export default {
       this.examSize = param;
     },
     endGame() {
-        this.isEndGame = true;
+      this.isEndGame = true;
     }
   }
 };
