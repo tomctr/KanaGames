@@ -15,7 +15,7 @@
 <template>
   <v-content>
     <v-row v-for="(item, x) in array_hiragana" :key="x" no-gutters>
-      <v-col v-for="(item, y) in item" :key="y" no-gutters>
+      <v-col v-for="(item, y) in item" :key="y" cols="auto">
         <v-card height="50" width="50" outlined @click="onKanaClick(item)">
           <v-row no-gutters justify="center" align="center" class="fill-height">{{item}}</v-row>
         </v-card>
