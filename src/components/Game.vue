@@ -1,3 +1,4 @@
+<!--
 <template>
   <v-container class="pa-0 ma-0 fill-height">
     <v-row class="fill-height" justify="center" align="center">
@@ -6,12 +7,18 @@
       <EndGame v-show="isEndGame" />
     </v-row>
   </v-container>
+</template> 
+-->
+
+<template>
+  <KanaArray/>
 </template>
 
 <script>
 import KanaCard from "./KanaCard";
 import PreGame from "./PreGame";
 import EndGame from "./EndGame";
+import KanaArray from "./KanaArray";
 
 export default {
   name: "Game",
@@ -19,7 +26,8 @@ export default {
   components: {
     KanaCard,
     PreGame,
-    EndGame
+    EndGame,
+    KanaArray,
   },
 
   data: () => ({
