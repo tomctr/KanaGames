@@ -13,13 +13,25 @@
           <v-switch inset></v-switch>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col cols="11">
-          <v-slider></v-slider>
-        </v-col>
-        <v-col cols="1">
-          <v-text-field v-model="examSize" outlined></v-text-field>
-        </v-col>
+      <v-row no-gutters>
+         <v-slider
+              v-model="slider"
+              class="align-center"
+              :max="max"
+              :min="0"
+              hide-details
+            >
+              <template v-slot:append>
+                <v-text-field
+                  v-model="slider"
+                  class="mt-0 pt-0"
+                  hide-details
+                  single-line
+                  type="number"
+                  style="width: 60px"
+                ></v-text-field>
+              </template>
+            </v-slider>
       </v-row>
       <v-row justify="center" no-gutters>
         <v-btn @click="start" block>Start Exam</v-btn>
@@ -31,7 +43,8 @@
 <script>
 export default {
   data: () => ({
-    examSize: 0
+    examSize: 0,
+    max: 20,
   }),
   methods: {
     start() {

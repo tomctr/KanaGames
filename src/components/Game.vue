@@ -1,4 +1,4 @@
-<!--
+
 <template>
   <v-container class="pa-0 ma-0 fill-height">
     <v-row class="fill-height" justify="center" align="center">
@@ -8,12 +8,12 @@
     </v-row>
   </v-container>
 </template> 
--->
 
+<!--
 <template>
   <KanaArray/>
 </template>
-
+-->
 <script>
 import KanaCard from "./KanaCard";
 import PreGame from "./PreGame";
