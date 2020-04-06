@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import Configuration from "../assets/configGame.js";
+
 export default {
   name: "KanaCard",
   data: () => ({
@@ -28,7 +30,7 @@ export default {
     key: 0
   }),
   props: {
-    size: { type: Number }
+    config: { type: Configuration }
   },
   methods: {
     submit() {
@@ -50,17 +52,28 @@ export default {
       }
     },
     setCurrentKana() {
-      this.currentKana = characters[this.idxKana].hiragana;
+      if (this.config.hiragana && this.config.katakana) {
+        var s = getRandomInt(1);
+        if (s === 0) {
+          this.currentKana = characters[this.idxKana].hiragana;
+        } else {
+          this.currentKana = characters[this.idxKana].katakana;
+        }
+      } else if (this.config.hiragana && !this.config.katakana) {
+        this.currentKana = characters[this.idxKana].hiragana;
+      } else {
+        this.currentKana = characters[this.idxKana].katakana;
+      }
     }
   },
   mounted() {
-    this.sequence = randomSequence(this.size);
+    this.sequence = randomSequence(this.config.examSize);
     this.nextKana();
   }
 };
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
+  return Math.floor(Math.random() * Math.floor(max + 1));
 }
 
 function randomSequence(length) {

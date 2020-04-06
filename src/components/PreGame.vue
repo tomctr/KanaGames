@@ -4,13 +4,13 @@
       <v-row align="center" no-gutters>
         <v-col>Hiragana</v-col>
         <v-col>
-          <v-switch inset></v-switch>
+          <v-switch v-model="isHiragana" inset></v-switch>
         </v-col>
       </v-row>
       <v-row align="center" no-gutters>
         <v-col>Katakana</v-col>
         <v-col>
-          <v-switch inset></v-switch>
+          <v-switch v-model="isKatakana" inset></v-switch>
         </v-col>
       </v-row>
       <v-row no-gutters>
@@ -41,14 +41,21 @@
 </template>
 
 <script>
+import { characters } from "../assets/characters.js";
+import KanaArrayVue from './KanaArray.vue';
+import Configuration from '../assets/configGame.js'
+
 export default {
   data: () => ({
-    examSize: 0,
-    max: 20,
+    slider: 0,
+    max: characters.length,
+    isHiragana: true,
+    isKatakana: true,
   }),
   methods: {
     start() {
-      this.$emit("start-game", parseInt(this.examSize));
+      var config = new Configuration(this.isHiragana, this.isKatakana, this.slider);
+      this.$emit("start-game", config);
     }
   }
 };

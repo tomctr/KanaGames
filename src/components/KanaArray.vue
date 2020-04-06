@@ -1,17 +1,3 @@
-<!--<template>
-  <v-container fluid>
-    <v-row>
-      <v-col cols="4">
-        <v-row>
-          <v-card v-for="item in characters" :key="item.hiragana" height="50" width="50" outlined @click="onKanaClick(item.hiragana)">
-            <v-row no-gutters justify="center" align="center" class="fill-height">{{ item.hiragana }}</v-row>
-          </v-card>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
-</template>-->
-
 <template>
   <v-content>
     <v-row v-for="(item, x) in array_hiragana" :key="x" no-gutters>

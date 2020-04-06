@@ -3,7 +3,7 @@
   <v-container class="pa-0 ma-0 fill-height">
     <v-row class="fill-height" justify="center" align="center">
       <PreGame v-on:start-game="startGame" v-show="showPreGame" />
-      <KanaCard v-if="!showPreGame && !isEndGame" :size="examSize" v-on:end-game="endGame" />
+      <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
       <EndGame v-show="isEndGame" />
     </v-row>
   </v-container>
@@ -33,12 +33,12 @@ export default {
   data: () => ({
     showPreGame: true,
     isEndGame: false,
-    examSize: null
+    config: null
   }),
   methods: {
     startGame(param) {
       this.showPreGame = false;
-      this.examSize = param;
+      this.config = param;
     },
     endGame() {
       this.isEndGame = true;
