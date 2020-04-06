@@ -47,7 +47,7 @@ import Configuration from '../assets/configGame.js'
 
 export default {
   data: () => ({
-    slider: 0,
+    slider: 20,
     max: characters.length,
     isHiragana: true,
     isKatakana: true,
