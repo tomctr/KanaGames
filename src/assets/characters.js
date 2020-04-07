@@ -46,3 +46,46 @@ export var characters = [
     { romaji: "wo", hiragana: "を", katakana: "ヲ" },
     { romaji: "n", hiragana: "ん", katakana: "ン" }
 ];
+
+var diacritic = [
+    { romaji: "ga", hiragana: "が", katakana: "ガ" },
+    { romaji: "gi", hiragana: "ぎ", katakana: "ギ" },
+    { romaji: "gu", hiragana: "ぐ", katakana: "グ" },
+    { romaji: "ge", hiragana: "げ", katakana: "ゲ" },
+    { romaji: "go", hiragana: "ご", katakana: "ゴ" },
+    { romaji: "za", hiragana: "ざ", katakana: "ザ" },
+    { romaji: "ji", hiragana: "じ", katakana: "ジ" },
+    { romaji: "zu", hiragana: "ず", katakana: "ズ" },
+    { romaji: "ze", hiragana: "ぜ", katakana: "ゼ" },
+    { romaji: "zo", hiragana: "ぞ", katakana: "ゾ" },
+    { romaji: "da", hiragana: "だ", katakana: "ダ" },
+    { romaji: "ji", hiragana: "ぢ", katakana: "ヂ" },
+    { romaji: "zu", hiragana: "づ", katakana: "ヅ" },
+    { romaji: "de", hiragana: "で", katakana: "デ" },
+    { romaji: "do", hiragana: "ど", katakana: "ド" },
+    { romaji: "ba", hiragana: "ば", katakana: "バ" },
+    { romaji: "bi", hiragana: "び", katakana: "ビ" },
+    { romaji: "bu", hiragana: "ぶ", katakana: "ブ" },
+    { romaji: "be", hiragana: "べ", katakana: "ベ" },
+    { romaji: "bo", hiragana: "ぼ", katakana: "ボ" },
+    { romaji: "pa", hiragana: "ぱ", katakana: "パ" },
+    { romaji: "pi", hiragana: "ぴ", katakana: "ピ" },
+    { romaji: "pu", hiragana: "ぷ", katakana: "プ" },
+    { romaji: "pe", hiragana: "ぺ", katakana: "ペ" },
+    { romaji: "po", hiragana: "ぽ", katakana: "ポ" },
+];
+
+var diagraph = [
+    { romaji: "gya", hiragana: "ぎゃ", katakana: "ギャ" },
+    { romaji: "gyu", hiragana: "ぎゅ", katakana: "ギュ" },
+    { romaji: "gyo", hiragana: "ぎょ", katakana: "ギョ" },
+    { romaji: "ja", hiragana: "じゃ", katakana: "ジャ" },
+    { romaji: "ju", hiragana: "じゅ", katakana: "ジュ" },
+    { romaji: "jo", hiragana: "じょ", katakana: "ジョ" },
+    { romaji: "bya", hiragana: "びゃ", katakana: "ビャ" },
+    { romaji: "byu", hiragana: "びゅ", katakana: "ビュ" },
+    { romaji: "byo", hiragana: "びょ", katakana: "ビョ" },
+    { romaji: "pya", hiragana: "ぴゃ", katakana: "ピャ" },
+    { romaji: "pyu", hiragana: "ぴゅ", katakana: "ピュ" },
+    { romaji: "pyo", hiragana: "ぴょ", katakana: "ピョ" },
+];
