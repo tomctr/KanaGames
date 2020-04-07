@@ -2,15 +2,61 @@
   <v-container>
     <v-card>
       <v-row align="center" no-gutters>
-        <v-col>Hiragana</v-col>
-        <v-col>
-          <v-switch v-model="isHiragana" inset v-on:change="onSwitchChange"></v-switch>
+        <v-col align="center" justify="center">
+          <v-row no-gutters align="center">
+            <v-col>Hiragana</v-col>
+            <v-col>
+              <v-switch v-model="isHiragana" inset v-on:change="onSwitchChange"></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col justify="center" align="center">
+          <v-row no-gutters align="center">
+            <v-col>Katakana</v-col>
+            <v-col>
+              <v-switch v-model="isKatakana" inset v-on:change="onSwitchChange"></v-switch>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
+      <v-divider></v-divider>
       <v-row align="center" no-gutters>
-        <v-col>Katakana</v-col>
-        <v-col>
-          <v-switch v-model="isKatakana" inset v-on:change="onSwitchChange"></v-switch>
+        <v-col align="center" justify="center">
+          <v-row no-gutters align="center">
+            <v-col>Diacritic</v-col>
+            <v-col>
+              <v-switch v-model="isDiacriticHiragana" inset v-on:change="onSwitchChange"></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col justify="center" align="center">
+          <v-row no-gutters align="center">
+            <v-col>Diacritic</v-col>
+            <v-col>
+              <v-switch v-model="isDiacriticKatakana" inset v-on:change="onSwitchChange"></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+       <v-row align="center" no-gutters>
+        <v-col align="center" justify="center">
+          <v-row no-gutters align="center">
+            <v-col>Diagraph</v-col>
+            <v-col>
+              <v-switch v-model="isDiagraphHiragana" inset v-on:change="onSwitchChange"></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col justify="center" align="center">
+          <v-row no-gutters align="center">
+            <v-col>Diagraph</v-col>
+            <v-col>
+              <v-switch v-model="isDiagraphKatakana" inset v-on:change="onSwitchChange"></v-switch>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
       <v-row no-gutters>
