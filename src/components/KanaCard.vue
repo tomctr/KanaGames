@@ -19,7 +19,7 @@
 
 <script>
 import Configuration from "../assets/configGame.js";
-
+//ADD QUIZZ PROGRESS 5/10 QUESTION 50% WITH V-PROGRESS-LINEAR
 export default {
   name: "KanaCard",
   data: () => ({

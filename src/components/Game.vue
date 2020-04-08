@@ -1,7 +1,7 @@
 
 <template>
   <v-container class="pa-0 ma-0 fill-height">
-    <v-row class="fill-height" justify="center" align="center">
+    <v-row class="fill-height pa-0 ma-0" justify="center" align="center" no-gutters>
       <PreGame v-on:start-game="startGame" v-show="showPreGame" />
       <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
       <EndGame v-show="isEndGame" />

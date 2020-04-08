@@ -47,7 +47,7 @@ export var characters = [
     { romaji: "n", hiragana: "ん", katakana: "ン" }
 ];
 
-var diacritic = [
+export var diacritic = [
     { romaji: "ga", hiragana: "が", katakana: "ガ" },
     { romaji: "gi", hiragana: "ぎ", katakana: "ギ" },
     { romaji: "gu", hiragana: "ぐ", katakana: "グ" },
@@ -75,7 +75,7 @@ var diacritic = [
     { romaji: "po", hiragana: "ぽ", katakana: "ポ" },
 ];
 
-var diagraph = [
+export var diagraph = [
     { romaji: "gya", hiragana: "ぎゃ", katakana: "ギャ" },
     { romaji: "gyu", hiragana: "ぎゅ", katakana: "ギュ" },
     { romaji: "gyo", hiragana: "ぎょ", katakana: "ギョ" },
