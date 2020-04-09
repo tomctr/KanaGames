@@ -122,11 +122,10 @@ export default {
   }),
   methods: {
     start() {
-      var config = new Configuration(
-        this.isHiragana,
-        this.isKatakana,
-        this.slider
-      );
+      var caracMap = new Map();
+      this.fillCaracMap(caracMap);
+      console.log(caracMap);
+      var config = new Configuration(caracMap, this.slider);
       this.$emit("start-game", config);
     },
     onSwitchChange(type, value) {
@@ -153,6 +152,14 @@ export default {
           }
           break;
       }
+    },
+    fillCaracMap(caracMap) {
+      caracMap.set('monoHira', this.isHiragana);
+      caracMap.set('monoKata', this.isKatakana);
+      caracMap.set('diagraHira', this.isDiagraphHiragana);
+      caracMap.set('diagraKata', this.isDiagraphKatakana);
+      caracMap.set('diacriHana', this.isDiacriticHiragana);
+      caracMap.set('diacriKata', this.isDiacriticKatakana);
     }
   }
 };

@@ -1,7 +1,6 @@
 export default class Configuration {
-    constructor(isHiragana, isKatakana, examSize) {
-        this.hiragana = isHiragana;
-        this.katakana = isKatakana;
+    constructor(caracMap, examSize) {
+        this.caracMap = caracMap;
         this.examSize = examSize;
     }
 }
