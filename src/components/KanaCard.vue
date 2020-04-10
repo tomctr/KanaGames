@@ -82,13 +82,23 @@ export default {
         }
       }
 
+      for (let [k, v] of this.config.caracMap) {
+        if (v == false) this.config.caracMap.delete(k);
+      }
+
+      var ctr = 0;
       for (var [key, value] of this.config.caracMap) {
-        if (value) {
           var caracList = mapCarac.get(key)();
           var ratio = caracList.length / totalCarac;
           var charRatioTotal = Math.floor(ratio * this.config.examSize);
           this.GetNRandCharacters(charRatioTotal, caracList, key);
-        }
+          ctr++;
+          if (ctr == this.config.caracMap.size){ 
+            if (this.examCharArr.length < this.config.examSize){ // on odd result add diff
+              var diff = this.config.examSize - this.examCharArr.length;
+              GetNRandCharacters(diff, caracList, caracType);
+            }
+          }
       }
     },
     GetNRandCharacters(ratio, caracList, caracType) {
@@ -96,7 +106,6 @@ export default {
       var type = caracType.includes("Hira") ? 0 : 1;
       var randSeq = randomSequence(ratio, caracList);
       randSeq.forEach(x => {
-        console.log('index : ' + x);
         if (type == 0) {
           this.examCharArr.push(caracList[x].hiragana);
         } else {
