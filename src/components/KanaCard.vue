@@ -35,7 +35,8 @@ export default {
     sequence: null,
     currentKana: "",
     idxKana: null,
-    key: 0
+    key: 0,
+    examCharArr: null
   }),
   props: {
     config: { type: Configuration }
@@ -86,16 +87,26 @@ export default {
           var caracList = mapCarac.get(key)();
           var ratio = caracList.length / totalCarac;
           var charRatioTotal = Math.floor(ratio * this.config.examSize);
-          this.GetNRandCharacters(charRatioTotal, caracList);
+          this.GetNRandCharacters(charRatioTotal, caracList, key);
         }
       }
     },
-    GetNRandCharacters(n, x) {
+    GetNRandCharacters(ratio, caracList, caracType) {
       //get n rand char from x characlist
-      console.log(n + x);
+      var type = caracType.includes("Hira") ? 0 : 1;
+      var randSeq = randomSequence(ratio, caracList);
+      randSeq.forEach(x => {
+        console.log('index : ' + x);
+        if (type == 0) {
+          this.examCharArr.push(caracList[x].hiragana);
+        } else {
+          this.examCharArr.push(caracList[x].katakana);
+        }
+      });
     }
   },
   mounted() {
+    this.examCharArr = new Array();
     this.generateQuizz();
     this.sequence = randomSequence(this.config.examSize);
     this.nextKana();
@@ -103,13 +114,13 @@ export default {
 };
 
 function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max + 1));
+  return Math.floor(Math.random() * Math.floor(max)); //max exclu
 }
 
-function randomSequence(length) {
+function randomSequence(length, list) {
   var arr = [];
   while (arr.length < length) {
-    var r = getRandomInt(characters.length);
+    var r = getRandomInt(list.length);
     if (arr.indexOf(r) === -1) arr.push(r);
   }
   return arr;
