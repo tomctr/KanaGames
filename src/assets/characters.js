@@ -91,11 +91,11 @@ export var diagraph = [
 ];
 
 
-export let mapCaracLength = new Map([
-    ['monoHira', () => { return characters.length; }],
-    ['monoKata', () => { return characters.length; }],
-    ['diagraHira', () => { return diagraph.length; }],
-    ['diagraKata', () => { return diagraph.length; }],
-    ['diacriHana', () => { return diacritic.length; }],
-    ['diacriKata', () => { return diacritic.length; }]
+export let mapCarac = new Map([
+    ['monoHira', () => { return characters; }],
+    ['monoKata', () => { return characters; }],
+    ['diagraHira', () => { return diagraph; }],
+    ['diagraKata', () => { return diagraph; }],
+    ['diacriHana', () => { return diacritic; }],
+    ['diacriKata', () => { return diacritic; }]
 ]);

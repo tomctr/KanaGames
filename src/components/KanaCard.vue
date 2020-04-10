@@ -23,8 +23,9 @@ import {
   characters,
   diacritic,
   diagraph,
-  mapCaracLength
+  mapCarac
 } from "../assets/characters.js";
+import caracTypes from "../assets/enum";
 
 //ADD QUIZZ PROGRESS 5/10 QUESTION 50% WITH V-PROGRESS-LINEAR
 export default {
@@ -76,23 +77,23 @@ export default {
       let totalCarac = 0;
       for (var [key, value] of this.config.caracMap) {
         if (value) {
-          totalCarac += mapCaracLength.get(key)();
+          totalCarac += mapCarac.get(key)().length;
         }
       }
 
       for (var [key, value] of this.config.caracMap) {
         if (value) {
-          var ratio = mapCaracLength.get(key)() / totalCarac;
+          var caracList = mapCarac.get(key)();
+          var ratio = caracList.length / totalCarac;
           var charRatioTotal = Math.floor(ratio * this.config.examSize);
-          this.GetNRandCharacters(charRatioTotal, x);
+          this.GetNRandCharacters(charRatioTotal, caracList);
         }
       }
-
-      console.log(totalCarac);
+    },
+    GetNRandCharacters(n, x) {
+      //get n rand char from x characlist
+      console.log(n + x);
     }
-  },
-  GetNRandCharacters(n, x){
-    //get n rand char from x characlist
   },
   mounted() {
     this.generateQuizz();
