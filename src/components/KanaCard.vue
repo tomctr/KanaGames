@@ -3,7 +3,7 @@
     <v-card-title no-gutters>
       <v-row justify="center">
         <v-slide-x-transition mode="out-in">
-          <v-card :key="key" width="200" height="200">
+          <v-card width="200" height="200">
             <v-row justify="center" align="center" class="fill-height" no-gutters>
               <div class="display-4">{{currentKana}}</div>
             </v-row>
@@ -14,6 +14,11 @@
     <v-card-text>
       <v-text-field v-on:keyup.enter="submit" v-model="answer" class="centered-input"></v-text-field>
     </v-card-text>
+    <v-row justify="end">
+      <v-btn icon color="grey" @click="skip" class="pr-5 pb-2">
+        <v-icon>mdi-fast-forward</v-icon>
+      </v-btn>
+    </v-row>
   </v-card>
 </template>
 
@@ -35,7 +40,6 @@ export default {
     sequence: null,
     currentKana: "",
     idxKana: null,
-    key: 0,
     examCharArr: null
   }),
   props: {
@@ -43,7 +47,7 @@ export default {
   },
   methods: {
     submit() {
-      if (characters[this.idxKana].romaji === this.answer) {
+      if (this.idxKana[1] === this.answer) {
         this.nextKana();
       } else {
         console.log("error");
@@ -51,27 +55,12 @@ export default {
       this.answer = "";
     },
     nextKana() {
-      if (this.sequence.length > 0) {
-        this.idxKana = this.sequence.shift();
-        this.setCurrentKana();
-        console.log("reponse : " + characters[this.idxKana].romaji);
-        this.key++;
+      if (this.examCharArr.length > 0) {
+        this.idxKana = this.examCharArr.shift();
+        this.currentKana = this.idxKana[0];
+        console.log("reponse : " + this.idxKana[1]);
       } else {
         this.$emit("end-game");
-      }
-    },
-    setCurrentKana() {
-      if (this.config.hiragana && this.config.katakana) {
-        var s = getRandomInt(1);
-        if (s === 0) {
-          this.currentKana = characters[this.idxKana].hiragana;
-        } else {
-          this.currentKana = characters[this.idxKana].katakana;
-        }
-      } else if (this.config.hiragana && !this.config.katakana) {
-        this.currentKana = characters[this.idxKana].hiragana;
-      } else {
-        this.currentKana = characters[this.idxKana].katakana;
       }
     },
     generateQuizz() {
@@ -88,18 +77,22 @@ export default {
 
       var ctr = 0;
       for (var [key, value] of this.config.caracMap) {
-          var caracList = mapCarac.get(key)();
-          var ratio = caracList.length / totalCarac;
-          var charRatioTotal = Math.floor(ratio * this.config.examSize);
-          this.GetNRandCharacters(charRatioTotal, caracList, key);
-          ctr++;
-          if (ctr == this.config.caracMap.size){ 
-            if (this.examCharArr.length < this.config.examSize){ // on odd result add diff
-              var diff = this.config.examSize - this.examCharArr.length;
-              GetNRandCharacters(diff, caracList, caracType);
-            }
+        var caracList = mapCarac.get(key)();
+        var ratio = caracList.length / totalCarac;
+        var charRatioTotal = Math.floor(ratio * this.config.examSize);
+        this.GetNRandCharacters(charRatioTotal, caracList, key);
+        ctr++;
+        if (ctr == this.config.caracMap.size) {
+          if (this.examCharArr.length < this.config.examSize) {
+            // on odd result add diff
+            var diff = this.config.examSize - this.examCharArr.length;
+            this.GetNRandCharacters(diff, caracList, key);
           }
+        }
       }
+    },
+    skip() {
+      this.nextKana();
     },
     GetNRandCharacters(ratio, caracList, caracType) {
       //get n rand char from x characlist
@@ -107,9 +100,9 @@ export default {
       var randSeq = randomSequence(ratio, caracList);
       randSeq.forEach(x => {
         if (type == 0) {
-          this.examCharArr.push(caracList[x].hiragana);
+          this.examCharArr.push([caracList[x].hiragana, caracList[x].romaji]);
         } else {
-          this.examCharArr.push(caracList[x].katakana);
+          this.examCharArr.push([caracList[x].katakana, caracList[x].romaji]);
         }
       });
     }
@@ -117,13 +110,24 @@ export default {
   mounted() {
     this.examCharArr = new Array();
     this.generateQuizz();
-    this.sequence = randomSequence(this.config.examSize);
+    shuffle(this.examCharArr);
     this.nextKana();
   }
 };
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max)); //max exclu
+}
+
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
 }
 
 function randomSequence(length, list) {
