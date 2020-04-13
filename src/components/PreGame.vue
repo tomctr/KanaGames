@@ -87,10 +87,9 @@
         <template v-slot:append>
           <v-text-field
             v-model="slider"
-            class="mt-0 pt-0"
+            class="mt-0 pt-0 pr-3 centered-input"
             hide-details
             single-line
-            type="number"
             style="width: 60px"
           ></v-text-field>
         </template>
@@ -166,4 +165,7 @@ export default {
 </script>
 
 <style>
+.centered-input input {
+  text-align: center;
+}
 </style>
