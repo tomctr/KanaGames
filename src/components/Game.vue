@@ -4,7 +4,7 @@
     <v-row class="fill-height pa-0 ma-0" justify="center" align="center" no-gutters>
       <PreGame v-on:start-game="startGame" v-show="showPreGame" />
       <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
-      <EndGame v-show="isEndGame" />
+      <EndGame v-show="isEndGame" :totalErrors="totalErrors" />
     </v-row>
   </v-container>
 </template> 
@@ -33,15 +33,17 @@ export default {
   data: () => ({
     showPreGame: true,
     isEndGame: false,
-    config: null
+    config: null,
+    totalErrors: 0,
   }),
   methods: {
     startGame(param) {
       this.showPreGame = false;
       this.config = param;
     },
-    endGame() {
+    endGame(totalErrors) {
       this.isEndGame = true;
+      this.totalErrors = totalErrors;
     }
   }
 };

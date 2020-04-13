@@ -1,12 +1,14 @@
 <template>
   <div>
-      fini
+      Total errors : {{totalErrors}}
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    totalErrors: {type: Number}
+  },
 }
 </script>
 

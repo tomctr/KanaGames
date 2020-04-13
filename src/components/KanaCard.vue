@@ -1,24 +1,20 @@
 <template>
   <v-card width="250" height="350">
-    <v-card-title no-gutters>
-      <v-row justify="center">
-        <v-slide-x-transition mode="out-in">
-          <v-card width="200" height="200">
-            <v-row justify="center" align="center" class="fill-height" no-gutters>
-              <div class="display-4">{{currentKana}}</div>
-            </v-row>
-          </v-card>
-        </v-slide-x-transition>
-      </v-row>
-    </v-card-title>
-    <v-card-text>
-      <v-text-field v-on:keyup.enter="submit" v-model="answer" class="centered-input"></v-text-field>
-    </v-card-text>
-    <v-row justify="end">
-      <v-btn icon color="grey" @click="skip" class="pr-5 pb-2">
-        <v-icon>mdi-fast-forward</v-icon>
-      </v-btn>
-    </v-row>
+      <v-card-title no-gutters>
+        <v-row justify="center">
+          <v-slide-x-transition mode="out-in">
+            <v-card width="200" height="200">
+              <v-row justify="center" align="center" class="fill-height" no-gutters>
+                <div class="display-4">{{currentKana}}</div>
+              </v-row>
+            </v-card>
+          </v-slide-x-transition>
+        </v-row>
+      </v-card-title>
+      <v-card-text class="pb-0 pt-0">
+        <v-text-field v-on:keyup.enter="submit" v-model="answer" class="centered-input"></v-text-field>
+      </v-card-text>
+      <v-btn outlined @click="getAnswer" depressed block v-show="isError">AWNSER</v-btn>
   </v-card>
 </template>
 
@@ -40,7 +36,9 @@ export default {
     sequence: null,
     currentKana: "",
     idxKana: null,
-    examCharArr: null
+    examCharArr: null,
+    isError: false,
+    totalError: 0,
   }),
   props: {
     config: { type: Configuration }
@@ -50,17 +48,20 @@ export default {
       if (this.idxKana[1] === this.answer) {
         this.nextKana();
       } else {
+        this.isError = true;
+        this.totalError++;
         console.log("error");
       }
       this.answer = "";
     },
     nextKana() {
+      this.isError = false;
       if (this.examCharArr.length > 0) {
         this.idxKana = this.examCharArr.shift();
         this.currentKana = this.idxKana[0];
         console.log("reponse : " + this.idxKana[1]);
       } else {
-        this.$emit("end-game");
+        this.$emit("end-game", this.totalError);
       }
     },
     generateQuizz() {
@@ -91,8 +92,8 @@ export default {
         }
       }
     },
-    skip() {
-      this.nextKana();
+    getAnswer() {
+      this.answer = this.idxKana[1];
     },
     GetNRandCharacters(ratio, caracList, caracType) {
       //get n rand char from x characlist
