@@ -1,5 +1,6 @@
 <template>
   <v-card width="250" height="350">
+    <div class="caption">{{currentPos}}/{{examLength}}</div>
       <v-card-title no-gutters>
         <v-row justify="center">
           <v-slide-x-transition mode="out-in">
@@ -39,6 +40,9 @@ export default {
     examCharArr: null,
     isError: false,
     totalError: 0,
+    totalCarac: 0,
+    currentPos:0,
+    examLength:0,
   }),
   props: {
     config: { type: Configuration }
@@ -59,16 +63,16 @@ export default {
       if (this.examCharArr.length > 0) {
         this.idxKana = this.examCharArr.shift();
         this.currentKana = this.idxKana[0];
+        this.currentPos++;
         console.log("reponse : " + this.idxKana[1]);
       } else {
         this.$emit("end-game", this.totalError);
       }
     },
     generateQuizz() {
-      let totalCarac = 0;
       for (var [key, value] of this.config.caracMap) {
         if (value) {
-          totalCarac += mapCarac.get(key)().length;
+          this.totalCarac += mapCarac.get(key)().length;
         }
       }
 
@@ -79,7 +83,7 @@ export default {
       var ctr = 0;
       for (var [key, value] of this.config.caracMap) {
         var caracList = mapCarac.get(key)();
-        var ratio = caracList.length / totalCarac;
+        var ratio = caracList.length / this.totalCarac;
         var charRatioTotal = Math.floor(ratio * this.config.examSize);
         this.GetNRandCharacters(charRatioTotal, caracList, key);
         ctr++;
@@ -112,6 +116,7 @@ export default {
     this.examCharArr = new Array();
     this.generateQuizz();
     shuffle(this.examCharArr);
+    this.examLength = this.examCharArr.length;
     this.nextKana();
   }
 };
