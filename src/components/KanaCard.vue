@@ -1,23 +1,26 @@
 <template>
   <v-card width="250" height="350">
-    <div class="caption">{{currentPos}}/{{examLength}}</div>
-      <v-card-title no-gutters>
-        <v-row justify="center">
-          <v-slide-x-transition mode="out-in">
-            <v-card width="200" height="200">
-              <v-row justify="center" align="center" class="fill-height" no-gutters>
-                <div class="display-4">{{currentKana}}</div>
-              </v-row>
-            </v-card>
-          </v-slide-x-transition>
-        </v-row>
-      </v-card-title>
-      <v-card-text class="pb-0 pt-0">
+    <v-row class="fill-height d-flex flex-column" no-gutters>
+      <v-row no-gutters align="center" justify="center" class="caption">{{currentPos}}/{{examLength}}</v-row>
+      <v-row no-gutters justify="center">
+        <v-slide-x-transition mode="out-in">
+          <v-card width="200" height="200">
+            <v-row justify="center" align="center" class="fill-height" no-gutters>
+              <div class="display-4">{{currentKana}}</div>
+            </v-row>
+          </v-card>
+        </v-slide-x-transition>
+      </v-row>
+      <v-row no-gutters class="pl-7 pr-7">
         <v-text-field v-on:keyup.enter="submit" v-model="answer" class="centered-input"></v-text-field>
-      </v-card-text>
-      <v-btn outlined @click="getAnswer" depressed block v-show="isError">AWNSER</v-btn>
+      </v-row>
+      <v-row no-gutters align="end">
+        <v-btn @click="getAnswer" depressed block v-show="isError">ANSWER</v-btn>
+      </v-row>
+    </v-row>
   </v-card>
 </template>
+
 
 <script>
 import Configuration from "../assets/configGame.js";
@@ -41,8 +44,8 @@ export default {
     isError: false,
     totalError: 0,
     totalCarac: 0,
-    currentPos:0,
-    examLength:0,
+    currentPos: 0,
+    examLength: 0
   }),
   props: {
     config: { type: Configuration }
