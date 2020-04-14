@@ -65,7 +65,7 @@ export default {
   }),
   methods: {
     onKanaClick(e) {
-      console.log(e);
+
     }
   },
   mounted() {

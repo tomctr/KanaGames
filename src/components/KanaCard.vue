@@ -1,7 +1,12 @@
 <template>
   <v-card width="250" height="350">
     <v-row class="fill-height d-flex flex-column" no-gutters>
-      <v-row no-gutters align="center" justify="center" class="caption">{{currentPos}}/{{examLength}}</v-row>
+      <v-row
+        no-gutters
+        align="center"
+        justify="center"
+        class="caption"
+      >{{currentPos}}/{{examLength}}</v-row>
       <v-row no-gutters justify="center">
         <v-slide-x-transition mode="out-in">
           <v-card width="200" height="200">
@@ -24,6 +29,7 @@
 
 <script>
 import Configuration from "../assets/configGame.js";
+import Result from "../assets/result.js";
 import {
   characters,
   diacritic,
@@ -55,8 +61,8 @@ export default {
       if (this.idxKana[1] === this.answer) {
         this.nextKana();
       } else {
+         if (!this.isError) this.totalError++;
         this.isError = true;
-        this.totalError++;
         console.log("error");
       }
       this.answer = "";
@@ -69,7 +75,8 @@ export default {
         this.currentPos++;
         console.log("reponse : " + this.idxKana[1]);
       } else {
-        this.$emit("end-game", this.totalError);
+        var examResult = new Result(this.totalError, this.examLength, null);
+        this.$emit("end-game", examResult);
       }
     },
     generateQuizz() {
