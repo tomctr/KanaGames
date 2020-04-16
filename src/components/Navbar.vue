@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="#5AC3D9" dark dense>
+    <v-app-bar color="#036273" dark dense>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
       <v-toolbar-title>KanaGames</v-toolbar-title>

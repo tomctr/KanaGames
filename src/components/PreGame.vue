@@ -6,6 +6,7 @@
           <v-col>Hiragana</v-col>
           <v-col>
             <v-switch
+              color="#90CFD4"
               v-model="isHiragana"
               inset
               v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isHiragana)"
@@ -19,6 +20,7 @@
           <v-col>Katakana</v-col>
           <v-col>
             <v-switch
+              color="#90CFD4"
               v-model="isKatakana"
               inset
               v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isKatakana)"
@@ -34,6 +36,7 @@
           <v-col>Diacritic</v-col>
           <v-col>
             <v-switch
+              color="#90CFD4"
               v-model="isDiacriticHiragana"
               inset
               v-on:change="onSwitchChange(caracEnum.DIACRITIC, isDiacriticHiragana)"
@@ -47,6 +50,7 @@
           <v-col>Diacritic</v-col>
           <v-col>
             <v-switch
+              color="#90CFD4"
               v-model="isDiacriticKatakana"
               inset
               v-on:change="onSwitchChange(caracEnum.DIACRITIC, isDiacriticKatakana)"
@@ -61,6 +65,7 @@
           <v-col>Diagraph</v-col>
           <v-col>
             <v-switch
+              color="#90CFD4"
               v-model="isDiagraphHiragana"
               inset
               v-on:change="onSwitchChange(caracEnum.DIAGRAPH, isDiagraphHiragana)"
@@ -71,9 +76,10 @@
       <v-divider vertical></v-divider>
       <v-col justify="center" align="center">
         <v-row no-gutters align="center">
-          <v-col>Diagraph</v-col>
+          <v-col class="3B393C--text">Diagraph</v-col>
           <v-col>
             <v-switch
+              color="#90CFD4"
               v-model="isDiagraphKatakana"
               inset
               v-on:change="onSwitchChange(caracEnum.DIAGRAPH, isDiagraphKatakana)"
@@ -82,8 +88,23 @@
         </v-row>
       </v-col>
     </v-row>
+    <v-row no-gutters justify="center" class="pt-3">
+      <v-dialog v-model="dialog" width="550">
+        <template v-slot:activator="{ on }">
+          <v-btn rounded depressed color="#90CFD4" class="white--text" v-on="on">Edit</v-btn>
+        </template>
+          <KanaArray/>
+      </v-dialog>
+    </v-row>
     <v-row no-gutters>
-      <v-slider v-model="slider" class="align-center" :max="max" :min="0" hide-details>
+      <v-slider
+        v-model="slider"
+        class="align-center"
+        :max="max"
+        :min="0"
+        hide-details
+        color="#90CFD4"
+      >
         <template v-slot:append>
           <v-text-field
             v-model="slider"
@@ -95,15 +116,15 @@
         </template>
       </v-slider>
     </v-row>
-    <v-row justify="center" no-gutters>
-      <v-btn @click="start" block>Start Exam</v-btn>
+    <v-row justify="center" no-gutters class="pb-2">
+      <v-btn @click="start" rounded color="#036273" class="white--text">Start Exam</v-btn>
     </v-row>
   </v-card>
 </template>
 
 <script>
 import { characters, diacritic, diagraph } from "../assets/characters.js";
-import KanaArrayVue from "./KanaArray.vue";
+import KanaArray from "./KanaArray.vue";
 import Configuration from "../assets/configGame.js";
 import caracTypes from "../assets/enum.js";
 
@@ -117,8 +138,12 @@ export default {
     isDiacriticKatakana: false,
     isDiagraphHiragana: false,
     isDiagraphKatakana: false,
-    caracEnum: caracTypes
+    caracEnum: caracTypes,
+    dialog: false,
   }),
+   components: {
+    KanaArray,
+  },
   methods: {
     start() {
       var caracMap = new Map();
@@ -153,12 +178,12 @@ export default {
       }
     },
     fillCaracMap(caracMap) {
-      caracMap.set('monoHira', this.isHiragana);
-      caracMap.set('monoKata', this.isKatakana);
-      caracMap.set('diagraHira', this.isDiagraphHiragana);
-      caracMap.set('diagraKata', this.isDiagraphKatakana);
-      caracMap.set('diacriHana', this.isDiacriticHiragana);
-      caracMap.set('diacriKata', this.isDiacriticKatakana);
+      caracMap.set("monoHira", this.isHiragana);
+      caracMap.set("monoKata", this.isKatakana);
+      caracMap.set("diagraHira", this.isDiagraphHiragana);
+      caracMap.set("diagraKata", this.isDiagraphKatakana);
+      caracMap.set("diacriHana", this.isDiacriticHiragana);
+      caracMap.set("diacriKata", this.isDiacriticKatakana);
     }
   }
 };

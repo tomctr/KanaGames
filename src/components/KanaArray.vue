@@ -1,3 +1,4 @@
+<!--
 <template>
   <v-content>
     <v-row v-for="(item, x) in array_hiragana" :key="x" no-gutters>
@@ -9,9 +10,35 @@
     </v-row>
   </v-content>
 </template>
+-->
+
+<template>
+  <v-card>
+    <v-row no-gutters>
+      <v-tabs grow color="#036273">
+        <v-tab>HIRAGANA</v-tab>
+        <v-tab>KATAKANA</v-tab>
+      </v-tabs>
+    </v-row>
+    <v-row no-gutters>
+        <v-row v-for="(item, x) in array_hiragana" :key="x" no-gutters>
+      <v-col v-for="(item, y) in item" :key="y" cols="auto">
+        <v-card height="50" width="50" outlined @click="onKanaClick(item)">
+          <v-row no-gutters justify="center" align="center" class="fill-height">{{item}}</v-row>
+        </v-card>
+      </v-col>
+    </v-row>
+    </v-row>
+    <v-row no-gutters justify="center" class="pb-2 pt-2">
+      <v-btn color="#036273" class="white--text"  @click="dialog = false" rounded>DONE</v-btn>
+    </v-row>
+  </v-card>
+</template>
+
 
 <script>
 export default {
+  name: "KanaArray",
   data: () => ({
     array_hiragana: null,
     characters: [
@@ -64,9 +91,7 @@ export default {
     ]
   }),
   methods: {
-    onKanaClick(e) {
-
-    }
+    onKanaClick(e) {}
   },
   mounted() {
     this.array_hiragana = [
