@@ -11,8 +11,8 @@
         <v-col v-for="(item, y) in item" :key="y" cols="auto">
           <v-card tile height="50" width="50" outlined @click="onKanaClick(item)">
             <v-row class="fill-height d-flex flex-column" no-gutters>
-              <v-row no-gutters justify="center" class="pt-1">{{printChar(item).value}}</v-row>
-              <v-row no-gutters justify="center" class="caption">{{printChar(item).romaji}}</v-row>
+              <v-row no-gutters justify="center" class="pt-1 font-weight-bold">{{printChar(item).value}}</v-row>
+              <v-row no-gutters justify="center" class="caption font-weight-thin">{{printChar(item).romaji}}</v-row>
             </v-row>
           </v-card>
         </v-col>
