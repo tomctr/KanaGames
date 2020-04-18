@@ -21,16 +21,16 @@
       </v-tabs>
     </v-row>
     <v-row no-gutters>
-        <v-row v-for="(item, x) in array_hiragana" :key="x" no-gutters>
-      <v-col v-for="(item, y) in item" :key="y" cols="auto">
-        <v-card height="50" width="50" outlined @click="onKanaClick(item)">
-          <v-row no-gutters justify="center" align="center" class="fill-height">{{item}}</v-row>
-        </v-card>
-      </v-col>
-    </v-row>
+      <v-row v-for="(item, x) in test" :key="x" no-gutters>
+        <v-col v-for="(item, y) in item" :key="y" cols="auto">
+          <v-card height="50" width="50" outlined @click="onKanaClick(item)">
+            <v-row no-gutters justify="center" align="center" class="fill-height">{{item.hiragana}}</v-row>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-row>
     <v-row no-gutters justify="center" class="pb-2 pt-2">
-      <v-btn color="#036273" class="white--text"  @click="dialog = false" rounded>DONE</v-btn>
+      <v-btn color="#036273" class="white--text" @click="dialog = false" rounded>DONE</v-btn>
     </v-row>
   </v-card>
 </template>
@@ -41,6 +41,10 @@ export default {
   name: "KanaArray",
   data: () => ({
     array_hiragana: null,
+    array_katakana: null,
+    prefix_mono: null,
+    suffix: null,
+    test: null,
     characters: [
       { romaji: "a", hiragana: "あ", katakana: "ア" },
       { romaji: "i", hiragana: "い", katakana: "イ" },
@@ -91,7 +95,31 @@ export default {
     ]
   }),
   methods: {
-    onKanaClick(e) {}
+    onKanaClick(e) {},
+    createArray(type, alphabet) {
+      var row = [];
+      var resArray = [];
+      //init col
+      for (let i = 0; i < this.suffix.length; i++) {
+        var targetChar = this.suffix[i];
+        var res = this.characters.filter(x => x.romaji == targetChar);
+        res.length > 0 ? row.push(res[0]) : row.push(" ");
+        resArray.push(row);
+        row = [];
+      }
+      //fill row
+        for (let i = 0; i < this.suffix.length; i++) {
+          for (let j = 0; j < type.length; j++) {
+            var targetChar = type[j] + this.suffix[i];
+            var res = this.characters.filter(x => x.romaji == targetChar);
+            var rowToFill = resArray[i];
+            res.length > 0 ? rowToFill.push(res[0]) : rowToFill.push("");
+          }
+          rowToFill = [];
+        }
+      console.log(resArray);
+      this.test = resArray;
+    }
   },
   mounted() {
     this.array_hiragana = [
@@ -101,6 +129,16 @@ export default {
       ["え", "け", "せ", "て", "ね", "へ", "め", "", "れ", "", ""],
       ["お", "こ", "そ", "と", "の", "ほ", "も", "よ", "ろ", "を", ""]
     ];
+    this.array_katakana = [
+      ["ア", "カ", "サ", "タ", "な", "は", "ま", "や", "ら", "わ", "ん"],
+      ["イ", "キ", "シ", "チ", "に", "ひ", "み", "", "り", "", ""],
+      ["ウ", "ク", "ス", "ツ", "ぬ", "ふ", "む", "ゆ", "る", "", ""],
+      ["エ", "ケ", "セ", "テ", "ね", "へ", "め", "", "れ", "", ""],
+      ["オ", "コ", "ソ", "ト", "の", "ほ", "も", "よ", "ろ", "を", ""]
+    ];
+    this.prefix_mono = ["k", "s", "t", "n", "h", "m", "y", "r", "w", "n"];
+    this.suffix = ["a", "i", "u", "e", "o"];
+    this.createArray(this.prefix_mono, "hiragana");
   }
 };
 </script>
