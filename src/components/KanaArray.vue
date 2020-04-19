@@ -9,10 +9,18 @@
     <v-row no-gutters>
       <v-row v-for="(item, x) in display_array" :key="x" no-gutters>
         <v-col v-for="(item, y) in item" :key="y" cols="auto">
-          <v-card tile height="50" width="50" outlined @click="onKanaClick(item)">
+          <v-card
+            tile
+            height="50"
+            width="50"
+            outlined
+            v-bind:disabled="item.disable"
+            @click="onKanaClick(item)"
+            v-bind:color="item.isSelected ? '#B9CB65' : ''"
+          >
             <v-row class="fill-height d-flex flex-column" no-gutters>
-              <v-row no-gutters justify="center" class="pt-1 font-weight-bold">{{printChar(item).value}}</v-row>
-              <v-row no-gutters justify="center" class="caption font-weight-thin">{{printChar(item).romaji}}</v-row>
+              <v-row no-gutters justify="center" class="pt-1 font-weight-bold">{{item.value}}</v-row>
+              <v-row no-gutters justify="center" class="caption font-weight-thin">{{item.romaji}}</v-row>
             </v-row>
           </v-card>
         </v-col>
@@ -43,7 +51,8 @@ export default {
   }),
   methods: {
     onKanaClick(e) {
-      console.log(this.getChar(e));
+      e.isSelected = e.isSelected == false ? true : false;
+      console.log(e);
     },
     clickTabHiragana() {
       this.display_array = this.array_hiragana;
@@ -51,37 +60,62 @@ export default {
     clickTabKatakana() {
       this.display_array = this.array_katakana;
     },
-    getChar(c) {
+    getChar(c, type) {
       var result;
-      if (this.display_array == this.array_hiragana) {
+      if (type == "hiragana") {
         result = characters.filter(x => x.hiragana == c);
       } else {
         result = characters.filter(x => x.katakana == c);
       }
       return result;
     },
-    printChar(c) {
-      var res = this.getChar(c);
+    printChar(c, type) {
+      var res = this.getChar(c, type);
       if (res.length == 0) {
-        return "";
-      } else return { value: c, romaji: res[0].romaji };
+        return { value: "", romaji: "", disable: true, isSelected: false };
+      } else
+        return {
+          value: c,
+          romaji: res[0].romaji,
+          disable: false,
+          isSelected: false
+        };
     }
   },
   mounted() {
-    this.array_hiragana = [
+    let arrhiragana = [
       ["あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ", "ん"],
       ["い", "き", "し", "ち", "に", "ひ", "み", "", "り", "", ""],
       ["う", "く", "す", "つ", "ぬ", "ふ", "む", "ゆ", "る", "", ""],
       ["え", "け", "せ", "て", "ね", "へ", "め", "", "れ", "", ""],
       ["お", "こ", "そ", "と", "の", "ほ", "も", "よ", "ろ", "を", ""]
     ];
-    this.array_katakana = [
+    let arrkatakana = [
       ["ア", "カ", "サ", "タ", "ナ", "ハ", "マ", "ヤ", "ラ", "ワ", "ン"],
       ["イ", "キ", "シ", "チ", "ニ", "ヒ", "ミ", "", "リ", "", ""],
       ["ウ", "ク", "ス", "ツ", "ヌ", "フ", "ム", "ユ", "ル", "", ""],
       ["エ", "ケ", "セ", "テ", "ネ", "ヘ", "メ", "", "レ", "", ""],
       ["オ", "コ", "ソ", "ト", "ノ", "ホ", "モ", "ヨ", "ロ", "ヲ", ""]
     ];
+
+    this.array_hiragana = [];
+    for (let i = 0; i < arrhiragana.length; i++) {
+      let r = [];
+      for (let j = 0; j < arrhiragana[i].length; j++) {
+        r.push(this.printChar(arrhiragana[i][j], "hiragana"));
+      }
+      this.array_hiragana.push(r);
+    }
+
+    this.array_katakana = [];
+    for (let i = 0; i < arrkatakana.length; i++) {
+      let r = [];
+      for (let j = 0; j < arrkatakana[i].length; j++) {
+        r.push(this.printChar(arrkatakana[i][j], "katakana"));
+      }
+      this.array_katakana.push(r);
+    }
+
     this.suffix = ["a", "i", "u", "e", "o"];
     this.display_array = this.array_hiragana;
   }
