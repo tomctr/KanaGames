@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card width="500">
     <v-row no-gutters>
       <v-tabs grow color="#036273">
         <v-tab @click="clickTabHiragana">HIRAGANA</v-tab>
@@ -42,7 +42,6 @@ import {
 } from "../assets/characters.js";
 
 export default {
-  name: "KanaArray",
   data: () => ({
     array_hiragana: null,
     array_katakana: null,

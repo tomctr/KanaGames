@@ -18,7 +18,6 @@
 import KanaCard from "./KanaCard";
 import PreGame from "./PreGame";
 import EndGame from "./EndGame";
-import KanaArray from "./KanaArray";
 
 export default {
   name: "Game",
@@ -27,7 +26,6 @@ export default {
     KanaCard,
     PreGame,
     EndGame,
-    KanaArray,
   },
 
   data: () => ({
