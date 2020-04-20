@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card width="550">
     <v-tabs grow color="#036273">
       <v-tab @click="showCustomGame">CUSTOM</v-tab>
       <v-tab @click="showRandomGame">RANDOM</v-tab>

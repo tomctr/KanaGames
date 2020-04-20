@@ -1,5 +1,5 @@
 <template>
-  <v-card width="500">
+  <v-card >
     <v-row no-gutters>
       <v-tabs grow color="#036273">
         <v-tab @click="clickTabHiragana">HIRAGANA</v-tab>
