@@ -13,7 +13,7 @@
   </div>
 </template>-->
 <template>
-  <v-navigation-drawer permanent expand-on-hover color="#036273" >
+  <v-navigation-drawer permanent expand-on-hover color="#036273"  class="fill-height">
     <v-list-item>
       <v-list-item-avatar>
         <v-img
