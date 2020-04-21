@@ -1,13 +1,23 @@
+<!--
 <template>
   <v-app>
     <Navbar />
     <div class="app-background fill-height">
       <v-content class="fill-height">
-        <v-container class="pa-0 fill-height">
+        <v-container class="pa-0 fill-height" no-gutters>
           <Game />
         </v-container>
       </v-content>
     </div>
+  </v-app>
+</template>
+-->
+<template>
+  <v-app>
+    <v-row class="fill-height app-background" no-gutters>
+      <Navbar/>
+      <Game />
+    </v-row>
   </v-app>
 </template>
 

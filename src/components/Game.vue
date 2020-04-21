@@ -1,19 +1,27 @@
-
-<template>
-  <v-container class="pa-0 ma-0 fill-height">
-    <v-row class="fill-height pa-0 ma-0" justify="center" align="center" no-gutters>
-      <PreGame v-on:start-game="startGame" v-show="showPreGame" />
-      <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
-      <EndGame v-if="isEndGame" :examResult="examResult" />
-    </v-row>
-  </v-container>
-</template> 
-
 <!--
 <template>
-  <KanaArray/>
-</template>
--->
+    <v-row class="fill-height pa-0 ma-0" justify="center" align="center" no-gutters>
+      <v-col>
+        <v-navigation-drawer>
+          <v-list-item-content>RANDOM </v-list-item-content>
+        </v-navigation-drawer>
+      </v-col>
+      <v-col>
+        <PreGame v-on:start-game="startGame" v-show="showPreGame" />
+        <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
+        <EndGame v-if="isEndGame" :examResult="examResult" />
+      </v-col>
+    </v-row>
+</template> -->
+
+<template>
+  <v-row justify="center" align="center">
+    <PreGame v-on:start-game="startGame" v-show="showPreGame" />
+    <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
+    <EndGame v-if="isEndGame" :examResult="examResult" />
+  </v-row>
+</template> 
+
 <script>
 import KanaCard from "./KanaCard";
 import PreGame from "./PreGame";
@@ -25,14 +33,14 @@ export default {
   components: {
     KanaCard,
     PreGame,
-    EndGame,
+    EndGame
   },
 
   data: () => ({
     showPreGame: true,
     isEndGame: false,
     config: null,
-    examResult: null,
+    examResult: null
   }),
   methods: {
     startGame(param) {
