@@ -15,7 +15,9 @@
 <template>
   <v-app>
     <v-row class="fill-height app-background" no-gutters>
-      <Navbar/>
+      <v-row>
+        <Navbar />
+      </v-row>
       <Game />
     </v-row>
   </v-app>
