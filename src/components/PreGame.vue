@@ -1,9 +1,5 @@
 <template>
   <v-card width="550">
-    <v-tabs grow color="#036273">
-      <v-tab @click="showCustomGame">CUSTOM</v-tab>
-      <v-tab @click="showRandomGame">RANDOM</v-tab>
-    </v-tabs>
     <RandomGameConfig v-if="!isCustomGame" v-on:start-game="startGame" />
     <CustomGameConfig v-if="isCustomGame" />
   </v-card>
