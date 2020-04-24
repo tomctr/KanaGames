@@ -16,9 +16,9 @@
   <v-app>
     <v-row class="fill-height app-background" no-gutters>
       <v-col cols="2" no-gutters>
-        <Navbar />
+        <Navbar v-on:select-game="selectGame"/>
       </v-col>
-      <Game />
+      <Game :typegame="typegame"/>
     </v-row>
   </v-app>
 </template>
@@ -34,10 +34,15 @@ export default {
     Game,
     Navbar
   },
+  methods:{
+    selectGame(e){
+      typegame = e;
+    }
+  },
 
   data: () => ({
-    //
-  })
+    typegame: 'custom',
+})
 };
 </script>
 

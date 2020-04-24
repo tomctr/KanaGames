@@ -23,13 +23,13 @@
     </v-list-item>
     <v-divider></v-divider>
     <v-list nav dense >
-      <v-list-item link>
+      <v-list-item link @click="onGameSelect('random')">
         <v-list-item-icon>
           <v-icon x-medium>mdi-shuffle</v-icon>
         </v-list-item-icon>
         <v-list-item-title class="font-weight-bold">RANDOM EXAM</v-list-item-title>
       </v-list-item>
-      <v-list-item link>
+      <v-list-item link @click="onGameSelect('custom')">
         <v-list-item-icon>
           <v-icon x-medium>mdi-school</v-icon>
         </v-list-item-icon>
@@ -41,7 +41,13 @@
 
 
 <script>
-export default {};
+export default {
+  methods:{
+    onGameSelect(e){
+     this.$emit("select-game", e);
+    },
+  }
+};
 </script>
 
 <style>

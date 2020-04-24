@@ -17,7 +17,9 @@ export default {
   data: () => ({
     isCustomGame: true
   }),
-
+  props: {
+    gametypeconfig: { type: String }
+  },
   methods: {
     startGame(param) {
       this.$emit("start-game", param);

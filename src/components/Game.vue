@@ -16,7 +16,7 @@
 
 <template>
   <v-row justify="center" align="center">
-    <PreGame v-on:start-game="startGame" v-show="showPreGame" />
+    <PreGame v-on:start-game="startGame" v-show="showPreGame" :gametypeconfig="typegame" />
     <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
     <EndGame v-if="isEndGame" :examResult="examResult" />
   </v-row>
@@ -29,11 +29,13 @@ import EndGame from "./EndGame";
 
 export default {
   name: "Game",
-  props: {},
   components: {
     KanaCard,
     PreGame,
     EndGame
+  },
+  props: {
+    typegame: { type: String }
   },
 
   data: () => ({
