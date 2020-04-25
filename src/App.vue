@@ -36,7 +36,7 @@ export default {
   },
   methods:{
     selectGame(e){
-      typegame = e;
+      this.typegame = e;
     }
   },
 
