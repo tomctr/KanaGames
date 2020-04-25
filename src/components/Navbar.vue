@@ -13,7 +13,7 @@
   </div>
 </template>-->
 <template>
-  <v-navigation-drawer permanent expand-on-hover color="#036273"  class="fill-height">
+  <v-navigation-drawer permanent expand-on-hover color="#036273" class="fill-height">
     <v-list-item>
       <v-list-item-avatar>
         <v-img
@@ -22,18 +22,18 @@
       </v-list-item-avatar>
     </v-list-item>
     <v-divider></v-divider>
-    <v-list nav dense >
+    <v-list nav dense>
+      <v-list-item link @click="onGameSelect('custom')">
+        <v-list-item-icon>
+          <v-icon x-medium>mdi-school</v-icon>
+        </v-list-item-icon>
+        <v-list-item-title class="font-weight-bold">CUSTOM EXAM</v-list-item-title>
+      </v-list-item>
       <v-list-item link @click="onGameSelect('random')">
         <v-list-item-icon>
           <v-icon x-medium>mdi-shuffle</v-icon>
         </v-list-item-icon>
         <v-list-item-title class="font-weight-bold">RANDOM EXAM</v-list-item-title>
-      </v-list-item>
-      <v-list-item link @click="onGameSelect('custom')">
-        <v-list-item-icon>
-          <v-icon x-medium>mdi-school</v-icon>
-        </v-list-item-icon>
-        <v-list-item-title class="font-weight-bold ">CUSTOM EXAM</v-list-item-title>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -42,10 +42,10 @@
 
 <script>
 export default {
-  methods:{
-    onGameSelect(e){
-     this.$emit("select-game", e);
-    },
+  methods: {
+    onGameSelect(e) {
+      this.$emit("select-game", e);
+    }
   }
 };
 </script>
