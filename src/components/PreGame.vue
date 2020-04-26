@@ -1,5 +1,5 @@
 <template>
-  <v-card width="550">
+  <v-card width="590">
     <RandomGameConfig v-if=" gametypeconfig == 'random'" v-on:start-game="startGame" />
     <CustomGameConfig v-if="gametypeconfig == 'custom'" />
   </v-card>

@@ -1,5 +1,5 @@
 <template>
-  <v-card >
+  <v-card>
     <v-row no-gutters>
       <v-tabs grow color="#036273">
         <v-tab @click="clickTabHiragana">HIRAGANA</v-tab>
@@ -24,10 +24,13 @@
             </v-row>
           </v-card>
         </v-col>
+        <v-row no-gutters class="fill-height" align="center"> 
+        <v-checkbox class="mt-0 mb-0 pt-0"></v-checkbox>
+        </v-row>
       </v-row>
     </v-row>
     <v-row no-gutters justify="center" class="pb-2 pt-2">
-      <v-btn color="#036273" class="white--text" @click="dialog = false" rounded>DONE</v-btn>
+      <v-btn color="#036273" class="white--text" @click="start" rounded>START EXAM</v-btn>
     </v-row>
   </v-card>
 </template>
@@ -46,7 +49,8 @@ export default {
     array_hiragana: null,
     array_katakana: null,
     suffix: null,
-    display_array: null
+    display_array: null,
+    list_exam: null
   }),
   methods: {
     onKanaClick(e) {
@@ -79,6 +83,20 @@ export default {
           disable: false,
           isSelected: false
         };
+    },
+    start() {
+      var res_hira = [];
+      this.array_hiragana.forEach(element => {
+        var r = element.filter(x => x.isSelected == true);
+        if (r.length > 0)
+        res_hira.push(r);
+      });
+      var res_kata = [];
+       this.array_katakana.forEach(element => {
+        var r = element.filter(x => x.isSelected == true);
+        if (r.length > 0)
+        res_kata.push(r);
+      });
     }
   },
   mounted() {
