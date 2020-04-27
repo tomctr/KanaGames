@@ -14,12 +14,14 @@
 -->
 <template>
   <v-app>
-    <v-row class="fill-height app-background" no-gutters>
-      <v-col cols="2" no-gutters>
-        <Navbar v-on:select-game="selectGame"/>
-      </v-col>
-      <Game :typegame="typegame"/>
-    </v-row>
+    <v-container fluid class="fill-height app-background pa-0">
+      <Navbar v-on:select-game="selectGame" />
+
+      <v-content class="fill-height">
+        <Game :typegame="typegame" />
+      </v-content>
+      
+    </v-container>
   </v-app>
 </template>
 
@@ -34,15 +36,15 @@ export default {
     Game,
     Navbar
   },
-  methods:{
-    selectGame(e){
+  methods: {
+    selectGame(e) {
       this.typegame = e;
     }
   },
 
   data: () => ({
-    typegame: 'custom',
-})
+    typegame: "custom"
+  })
 };
 </script>
 

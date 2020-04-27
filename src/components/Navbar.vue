@@ -13,9 +13,9 @@
   </div>
 </template>-->
 <template>
-  <v-navigation-drawer permanent expand-on-hover color="#036273" class="fill-height">
+  <v-navigation-drawer permanent expand-on-hover color="#036273" class="fill-height" app>
     <v-list-item>
-      <v-list-item-avatar>
+      <v-list-item-avatar> 
         <v-img
           src="https://i.pinimg.com/236x/d4/08/82/d4088298ad3510ee746bde10585da6cd--anime-people-anime-guys.jpg"
         ></v-img>
