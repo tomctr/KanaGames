@@ -88,14 +88,6 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row no-gutters justify="center" class="pt-3">
-      <v-dialog v-model="dialog" width="550">
-        <template v-slot:activator="{ on }">
-          <v-btn rounded depressed color="#90CFD4" class="white--text" v-on="on">Edit</v-btn>
-        </template>
-        <KanaArray />
-      </v-dialog>
-    </v-row>
     <v-row no-gutters>
       <v-slider
         v-model="slider"

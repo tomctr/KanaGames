@@ -24,8 +24,8 @@
             </v-row>
           </v-card>
         </v-col>
-        <v-row no-gutters class="fill-height" align="center"> 
-        <v-checkbox class="mt-0 mb-0 pt-0"></v-checkbox>
+        <v-row no-gutters class="fill-height" align="center">
+          <v-checkbox class="mt-0 mb-0 pt-0" @change="clickedRow(x, value)"></v-checkbox>
         </v-row>
       </v-row>
     </v-row>
@@ -63,6 +63,12 @@ export default {
     clickTabKatakana() {
       this.display_array = this.array_katakana;
     },
+    clickedRow(x, value) {
+      console.log(value);
+      this.display_array[x].forEach(x => {
+        if (x.value != "") x.isSelected = true;
+      });
+    },
     getChar(c, type) {
       var result;
       if (type == "hiragana") {
@@ -88,14 +94,12 @@ export default {
       var res_hira = [];
       this.array_hiragana.forEach(element => {
         var r = element.filter(x => x.isSelected == true);
-        if (r.length > 0)
-        res_hira.push(r);
+        if (r.length > 0) res_hira.push(r);
       });
       var res_kata = [];
-       this.array_katakana.forEach(element => {
+      this.array_katakana.forEach(element => {
         var r = element.filter(x => x.isSelected == true);
-        if (r.length > 0)
-        res_kata.push(r);
+        if (r.length > 0) res_kata.push(r);
       });
     }
   },
