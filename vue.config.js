@@ -3,3 +3,9 @@ module.exports = {
     "vuetify"
   ]
 }
+
+module.exports = {
+  pwa: {
+    name:'Kana Learn'
+  }
+}
