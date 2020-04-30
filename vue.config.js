@@ -9,8 +9,8 @@ module.exports = {
     name:'Kana Learn',
     icons: [    
         {
-          'src': 'public/img/icons/pngfuel.com.png',
-          'sizes': '192x192',
+          'src': 'public/img/icons/logo-196.png',
+          'sizes': '196x196',
           'type': 'image/png',
       },
     ]
