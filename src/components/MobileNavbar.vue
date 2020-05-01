@@ -1,19 +1,22 @@
 <template>
   <v-bottom-navigation
-    v-model="bottomNav"
+  height="100px"
+  class="mb-5"
+  width="700"
+  grow="true"
   >
     <v-btn value="recent">
-      <span>Recent</span>
+      <span>Profil</span>
       <v-icon>mdi-history</v-icon>
     </v-btn>
 
     <v-btn value="favorites">
-      <span>Favorites</span>
-      <v-icon>mdi-heart</v-icon>
+      <span>Game</span>
+      <v-icon>mdi-play</v-icon>
     </v-btn>
 
     <v-btn value="nearby">
-      <span>Nearby</span>
+      <span>Kana</span>
       <v-icon>mdi-map-marker</v-icon>
     </v-btn>
   </v-bottom-navigation>
