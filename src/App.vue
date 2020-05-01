@@ -1,40 +1,28 @@
-<!--
-<template>
-  <v-app>
-    <Navbar />
-    <div class="app-background fill-height">
-      <v-content class="fill-height">
-        <v-container class="pa-0 fill-height" no-gutters>
-          <Game />
-        </v-container>
-      </v-content>
-    </div>
-  </v-app>
-</template>
--->
 <template>
   <v-app>
     <v-container fluid class="fill-height app-background pa-0">
-      <Navbar v-on:select-game="selectGame" />
-
+      <Navbar v-on:select-game="selectGame" v-if="$vuetify.breakpoint.lg"/>
       <v-content class="fill-height">
         <Game :typegame="typegame" />
       </v-content>
-      
     </v-container>
+          <MobileNavbar/>
+
   </v-app>
 </template>
 
 <script>
 import Game from "./components/Game";
 import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/MobileNavbar";
 
 export default {
   name: "App",
 
   components: {
     Game,
-    Navbar
+    Navbar,
+    MobileNavbar
   },
   methods: {
     selectGame(e) {

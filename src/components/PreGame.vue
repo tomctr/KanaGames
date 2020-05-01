@@ -1,7 +1,8 @@
 <template>
-  <v-card width="590">
-    <RandomGameConfig v-if=" gametypeconfig == 'random'" v-on:start-game="startGame" />
-    <CustomGameConfig v-if="gametypeconfig == 'custom'" />
+  <v-card v-bind:width="cardWidth" :height="cardHeight">
+   <!-- <RandomGameConfig v-if=" gametypeconfig == 'random'" v-on:start-game="startGame" class="fill-height" />
+    <CustomGameConfig v-if="gametypeconfig == 'custom'" /> -->
+     <RandomGameConfig v-on:start-game="startGame" class="fill-height" />
   </v-card>
 </template>
 
@@ -15,7 +16,7 @@ export default {
     CustomGameConfig
   },
   data: () => ({
-    isCustomGame: true
+    isCustomGame: false
   }),
   props: {
     gametypeconfig: { type: String }
@@ -25,11 +26,33 @@ export default {
       this.$emit("start-game", param);
     },
     showCustomGame() {
-      this.isCustomGame = true;
-    },
-    showRandomGame() {
       this.isCustomGame = false;
     },
+    showRandomGame() {
+      this.isCustomGame = true;
+    }
+  },
+  computed: {
+    cardWidth() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+        case "s":
+        case "md":
+          return "800";
+        default:
+          return "590";
+      }
+    },
+    cardHeight() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+        case "s":
+        case "md":
+          return "1000";
+        default:
+          return "350";
+      }
+    }
   }
 };
 </script>
