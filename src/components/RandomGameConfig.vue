@@ -1,116 +1,116 @@
 <template>
-  <v-card >
-    <v-row align="center" no-gutters>
-      <v-col align="center" justify="center">
-        <v-row no-gutters align="center">
-          <v-col>Hiragana</v-col>
-          <v-col>
-            <v-switch
-              color="#90CFD4"
-              v-model="isHiragana"
-              inset
-              v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isHiragana)"
-            ></v-switch>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-divider vertical></v-divider>
-      <v-col justify="center" align="center">
-        <v-row no-gutters align="center">
-          <v-col>Katakana</v-col>
-          <v-col>
-            <v-switch
-              color="#90CFD4"
-              v-model="isKatakana"
-              inset
-              v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isKatakana)"
-            ></v-switch>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-    <v-divider></v-divider>
-    <v-row align="center" no-gutters>
-      <v-col align="center" justify="center">
-        <v-row no-gutters align="center">
-          <v-col>Diacritic</v-col>
-          <v-col>
-            <v-switch
-              color="#90CFD4"
-              v-model="isDiacriticHiragana"
-              inset
-              v-on:change="onSwitchChange(caracEnum.DIACRITIC, isDiacriticHiragana)"
-            ></v-switch>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-divider vertical></v-divider>
-      <v-col justify="center" align="center">
-        <v-row no-gutters align="center">
-          <v-col>Diacritic</v-col>
-          <v-col>
-            <v-switch
-              color="#90CFD4"
-              v-model="isDiacriticKatakana"
-              inset
-              v-on:change="onSwitchChange(caracEnum.DIACRITIC, isDiacriticKatakana)"
-            ></v-switch>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-    <v-row align="center" no-gutters>
-      <v-col align="center" justify="center">
-        <v-row no-gutters align="center">
-          <v-col>Diagraph</v-col>
-          <v-col>
-            <v-switch
-              color="#90CFD4"
-              v-model="isDiagraphHiragana"
-              inset
-              v-on:change="onSwitchChange(caracEnum.DIAGRAPH, isDiagraphHiragana)"
-            ></v-switch>
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-divider vertical></v-divider>
-      <v-col justify="center" align="center">
-        <v-row no-gutters align="center">
-          <v-col class="3B393C--text">Diagraph</v-col>
-          <v-col>
-            <v-switch
-              color="#90CFD4"
-              v-model="isDiagraphKatakana"
-              inset
-              v-on:change="onSwitchChange(caracEnum.DIAGRAPH, isDiagraphKatakana)"
-            ></v-switch>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-    <v-row no-gutters>
-      <v-slider
-        v-model="slider"
-        class="align-center"
-        :max="max"
-        :min="0"
-        hide-details
-        color="#90CFD4"
-      >
-        <template v-slot:append>
-          <v-text-field
-            v-model="slider"
-            class="mt-0 pt-0 pr-3 centered-input"
-            hide-details
-            single-line
-            style="width: 60px"
-          ></v-text-field>
-        </template>
-      </v-slider>
-    </v-row>
-    <v-row justify="center" no-gutters class="pb-2">
-      <v-btn @click="start" rounded color="#036273" class="white--text">Start Exam</v-btn>
-    </v-row>
+  <v-card>
+      <v-row align="center" no-gutters>
+        <v-col align="center" justify="center">
+          <v-row no-gutters align="center">
+            <v-col>Hiragana</v-col>
+            <v-col>
+              <v-switch
+                color="#90CFD4"
+                v-model="isHiragana"
+                inset
+                v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isHiragana)"
+              ></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col justify="center" align="center">
+          <v-row no-gutters align="center">
+            <v-col>Katakana</v-col>
+            <v-col>
+              <v-switch
+                color="#90CFD4"
+                v-model="isKatakana"
+                inset
+                v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isKatakana)"
+              ></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-divider></v-divider>
+      <v-row align="center" no-gutters>
+        <v-col align="center" justify="center">
+          <v-row no-gutters align="center">
+            <v-col>Diacritic</v-col>
+            <v-col>
+              <v-switch
+                color="#90CFD4"
+                v-model="isDiacriticHiragana"
+                inset
+                v-on:change="onSwitchChange(caracEnum.DIACRITIC, isDiacriticHiragana)"
+              ></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col justify="center" align="center">
+          <v-row no-gutters align="center">
+            <v-col>Diacritic</v-col>
+            <v-col>
+              <v-switch
+                color="#90CFD4"
+                v-model="isDiacriticKatakana"
+                inset
+                v-on:change="onSwitchChange(caracEnum.DIACRITIC, isDiacriticKatakana)"
+              ></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-row align="center" no-gutters>
+        <v-col align="center" justify="center">
+          <v-row no-gutters align="center">
+            <v-col>Diagraph</v-col>
+            <v-col>
+              <v-switch
+                color="#90CFD4"
+                v-model="isDiagraphHiragana"
+                inset
+                v-on:change="onSwitchChange(caracEnum.DIAGRAPH, isDiagraphHiragana)"
+              ></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-divider vertical></v-divider>
+        <v-col justify="center" align="center">
+          <v-row no-gutters align="center">
+            <v-col class="3B393C--text">Diagraph</v-col>
+            <v-col>
+              <v-switch
+                color="#90CFD4"
+                v-model="isDiagraphKatakana"
+                inset
+                v-on:change="onSwitchChange(caracEnum.DIAGRAPH, isDiagraphKatakana)"
+              ></v-switch>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+      <v-row no-gutters>
+        <v-slider
+          v-model="slider"
+          class="align-center"
+          :max="max"
+          :min="0"
+          hide-details
+          color="#90CFD4"
+        >
+          <template v-slot:append>
+            <v-text-field
+              v-model="slider"
+              class="mt-0 pt-0 pr-3 centered-input"
+              hide-details
+              single-line
+              style="width: 60px"
+            ></v-text-field>
+          </template>
+        </v-slider>
+      </v-row>
+      <v-row justify="center" align="end" no-gutters class="pb-2">
+        <v-btn @click="start" rounded color="#036273" class="white--text">Start Exam</v-btn>
+      </v-row>
   </v-card>
 </template>
 
@@ -131,10 +131,9 @@ export default {
     isDiagraphKatakana: false,
     caracEnum: caracTypes,
     dialog: false,
-    showCustomGame: true,
+    showCustomGame: true
   }),
-  components: {
-  },
+  components: {},
   methods: {
     start() {
       var caracMap = new Map();
@@ -168,9 +167,7 @@ export default {
           break;
       }
     },
-    clickCustomGame(){
-
-    },
+    clickCustomGame() {},
     fillCaracMap(caracMap) {
       caracMap.set("monoHira", this.isHiragana);
       caracMap.set("monoKata", this.isKatakana);

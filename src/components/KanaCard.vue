@@ -1,12 +1,12 @@
 <template>
   <v-card width="250" height="350">
     <v-row class="fill-height d-flex flex-column" no-gutters>
-      <v-row
+      <div
         no-gutters
         align="center"
         justify="center"
         class="caption"
-      >{{currentPos}}/{{examLength}}</v-row>
+      >{{currentPos}}/{{examLength}}</div>
       <v-row no-gutters justify="center">
         <v-slide-x-transition mode="out-in">
           <v-card width="200" height="200">
