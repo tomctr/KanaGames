@@ -1,19 +1,24 @@
 <template>
   <v-bottom-navigation
+  height="150px"
   grow
+  background-color="#036273"
+  color="white"
+  dark
   >
     <v-btn value="recent">
-      <span>Profil</span>
-      <v-icon>mdi-history</v-icon>
+      <span class="display-1">Profil</span>
+      <v-icon x-large>mdi-face</v-icon>
     </v-btn>
 
     <v-btn value="favorites">
-      <span>Game</span>
-      <v-icon>mdi-play</v-icon>
+      <span class="display-1">Game</span>
+      <v-icon x-large >mdi-play</v-icon>
     </v-btn>
+
     <v-btn value="nearby">
-      <span>Kana</span>
-      <v-icon>mdi-map-marker</v-icon>
+      <span class="display-1">Kana</span>
+      <span class="display-1 font-weight-bold">あ</span>
     </v-btn>
   </v-bottom-navigation>
 </template>

@@ -1,5 +1,6 @@
 <template>
-  <v-card class="flex-column">
+  <v-card>
+    <v-row class="fill-height flex-column" no-gutters>
     <v-row no-gutters class="flex-column">
       <v-row v-for="i in 11" :key="i" no-gutters>
         <v-col v-for="j in 5" :key="j">
@@ -9,6 +10,7 @@
             outlined
             @click="onKanaClick(display_array[j-1][i-1])"
             v-bind:color="display_array[j-1][i-1].isSelected ? '#B9CB65' : ''"
+            height="115px"
           >
             <v-row class="fill-height d-flex flex-column" no-gutters>
               <v-row
@@ -33,10 +35,10 @@
         <v-tab @click="clickTabHiragana" class="display-2">HIRAGANA</v-tab>
         <v-tab @click="clickTabKatakana" class="display-2">KATAKANA</v-tab>
       </v-tabs>
-
     </v-row>
-    <v-row no-gutters justify="center" align="stretch" class="pb-2 pt-2 ">
-      <v-btn color="#036273" class="white--text" @click="start" rounded>START EXAM</v-btn>
+    <v-row no-gutters justify="center" align="end">
+      <v-btn height="100px" color="#438889" class="white--text display-1" @click="start" block>START EXAM</v-btn>
+    </v-row>
     </v-row>
   </v-card>
 </template>
