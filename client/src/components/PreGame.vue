@@ -1,8 +1,7 @@
 <template>
   <v-card v-bind:width="cardWidth" :height="cardHeight">
-   <!-- <RandomGameConfig v-if=" gametypeconfig == 'random'" v-on:start-game="startGame" class="fill-height" />
-    <CustomGameConfig v-if="gametypeconfig == 'custom'" /> -->
-     <RandomGameConfig v-on:start-game="startGame" class="fill-height" />
+    <RandomGameConfig v-if=" gametypeconfig == 'random'" v-on:start-game="startGame" class="fill-height" />
+    <CustomGameConfig v-if="gametypeconfig == 'custom'" class="fill-height"/> 
   </v-card>
 </template>
 
@@ -48,7 +47,7 @@ export default {
         case "xs":
         case "s":
         case "md":
-          return "1000";
+          return "1500";
         default:
           return "350";
       }

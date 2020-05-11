@@ -1,14 +1,12 @@
 <template>
   <v-app>
     <v-container fluid class="fill-height app-background pa-0">
-      <Navbar v-on:select-game="selectGame" v-if="$vuetify.breakpoint.lg" />
+      <!--     <Navbar v-on:select-game="selectGame" v-if="$vuetify.breakpoint.lg" /> -->
       <v-content class="fill-height">
         <Game :typegame="typegame" />
       </v-content>
     </v-container>
-    <v-row justify="center"> 
-    <MobileNavbar />
-    </v-row>
+    <MobileNavbar/>
   </v-app>
 </template>
 

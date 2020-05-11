@@ -1,35 +1,41 @@
 <template>
-  <v-card>
-    <v-row no-gutters>
-      <v-tabs grow color="#036273">
-        <v-tab @click="clickTabHiragana">HIRAGANA</v-tab>
-        <v-tab @click="clickTabKatakana">KATAKANA</v-tab>
-      </v-tabs>
-    </v-row>
-    <v-row no-gutters>
-      <v-row v-for="(item, x) in display_array" :key="x" no-gutters>
-        <v-col v-for="(item, y) in item" :key="y" cols="auto">
+  <v-card class="flex-column">
+    <v-row no-gutters class="flex-column">
+      <v-row v-for="i in 11" :key="i" no-gutters>
+        <v-col v-for="j in 5" :key="j">
           <v-card
             tile
-            height="50"
-            width="50"
+            v-bind:disabled="display_array[j-1][i-1].disable"
             outlined
-            v-bind:disabled="item.disable"
-            @click="onKanaClick(item)"
-            v-bind:color="item.isSelected ? '#B9CB65' : ''"
+            @click="onKanaClick(display_array[j-1][i-1])"
+            v-bind:color="display_array[j-1][i-1].isSelected ? '#B9CB65' : ''"
           >
             <v-row class="fill-height d-flex flex-column" no-gutters>
-              <v-row no-gutters justify="center" class="pt-1 font-weight-bold">{{item.value}}</v-row>
-              <v-row no-gutters justify="center" class="caption font-weight-thin">{{item.romaji}}</v-row>
+              <v-row
+                no-gutters
+                justify="center"
+                class="pt-1 display-2 font-weight-bold"
+              >{{display_array[j-1][i-1].value}}</v-row>
+              <v-row
+                no-gutters
+                justify="center"
+                class="display-1 font-weight-thin"
+              >{{display_array[j-1][i-1].romaji}}</v-row>
             </v-row>
           </v-card>
         </v-col>
-        <v-row no-gutters class="fill-height" align="center">
-          <v-checkbox class="mt-0 mb-0 pt-0" @change="clickedRow(x, value)"></v-checkbox>
-        </v-row>
       </v-row>
     </v-row>
-    <v-row no-gutters justify="center" class="pb-2 pt-2">
+    <v-row no-gutters>
+      <v-tabs grow color="#036273">
+              <v-tabs-slider>
+      </v-tabs-slider>
+        <v-tab @click="clickTabHiragana" class="display-2">HIRAGANA</v-tab>
+        <v-tab @click="clickTabKatakana" class="display-2">KATAKANA</v-tab>
+      </v-tabs>
+
+    </v-row>
+    <v-row no-gutters justify="center" align="stretch" class="pb-2 pt-2 ">
       <v-btn color="#036273" class="white--text" @click="start" rounded>START EXAM</v-btn>
     </v-row>
   </v-card>
