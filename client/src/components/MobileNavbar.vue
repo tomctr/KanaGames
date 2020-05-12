@@ -1,13 +1,14 @@
 <template>
   <v-bottom-navigation
-  height="150px"
+  height="175px"
   grow
   background-color="#036273"
   color="white"
   dark
+  class="d-flex justify-space-around align-self-start "
   >
     <v-btn value="recent">
-      <span class="display-1">Profil</span>
+      <span class="display-1" >Profil</span>
       <v-icon x-large>mdi-face</v-icon>
     </v-btn>
 
