@@ -3,7 +3,8 @@
     <v-container fluid class="fill-height app-background pa-0">
       <!--     <Navbar v-on:select-game="selectGame" v-if="$vuetify.breakpoint.lg" /> -->
       <v-content class="fill-height">
-        <Game :typegame="typegame" />
+        <!--<Game :typegame="typegame" />-->
+        <router-view></router-view>
       </v-content>
     </v-container>
     <MobileNavbar/>
