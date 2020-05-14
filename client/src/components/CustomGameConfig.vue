@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card height="1500">
     <v-row class="fill-height flex-column" no-gutters>
     <v-row no-gutters class="flex-column">
       <v-row v-for="i in 11" :key="i" no-gutters>
