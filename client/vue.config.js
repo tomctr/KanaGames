@@ -18,7 +18,7 @@ module.exports = {
       ]
     }
     ,
-    appleMobileWebAppStatusBarStyle: 'white',
-    themeColor: '#4DBA87',
+    appleMobileWebAppStatusBarStyle: '#1B1B2E',
+    themeColor: '#1B1B2E',
   }
 }
