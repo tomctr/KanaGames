@@ -6,8 +6,8 @@
         <!--<Game :typegame="typegame" />-->
         <router-view></router-view>
       </v-content>
+          <MobileNavbar/>
     </v-container>
-    <MobileNavbar/>
   </v-app>
 </template>
 
@@ -38,6 +38,6 @@ export default {
 
 <style scoped>
 .app-background {
-  background-color: #fcfbf6;
+  background-color: #1B1B2E;
 }
 </style>
