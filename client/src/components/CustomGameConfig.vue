@@ -1,7 +1,7 @@
 <template>
-  <v-card height="1500">
+  <v-card height="1500" id="CustomConfigCard" class="ma-10">
     <v-row class="fill-height flex-column" no-gutters>
-    <v-row no-gutters class="flex-column">
+    <v-row no-gutters class="flex-column" >
       <v-row v-for="i in 11" :key="i" no-gutters>
         <v-col v-for="j in 5" :key="j">
           <v-card
@@ -11,6 +11,8 @@
             @click="onKanaClick(display_array[j-1][i-1])"
             v-bind:color="display_array[j-1][i-1].isSelected ? '#B9CB65' : ''"
             height="115px"
+            id="caracCard"
+            dark
           >
             <v-row class="fill-height d-flex flex-column" no-gutters>
               <v-row
@@ -28,16 +30,14 @@
         </v-col>
       </v-row>
     </v-row>
-    <v-row no-gutters>
-      <v-tabs grow color="#036273">
-              <v-tabs-slider>
-      </v-tabs-slider>
+    <v-row no-gutters id="tabSelect">
+      <v-tabs grow >
         <v-tab @click="clickTabHiragana" class="display-2">HIRAGANA</v-tab>
         <v-tab @click="clickTabKatakana" class="display-2">KATAKANA</v-tab>
       </v-tabs>
     </v-row>
     <v-row no-gutters justify="center" align="end">
-      <v-btn height="100px" color="#438889" class="white--text display-1" @click="start" block>START EXAM</v-btn>
+      <v-btn height="100px" color="#1B1B2E" class="white--text display-1" @click="start" block>START EXAM</v-btn>
     </v-row>
     </v-row>
   </v-card>
@@ -152,4 +152,14 @@ export default {
 </script>
 
 <style>
+#CustomConfigCard{
+    background-color: rgba(55, 57, 86, 0.45);
+    border-radius: 40px;
+}
+#caracCard{
+      background-color: rgba(55, 57, 86, 0.45);
+}
+#tabSelect{
+        background-color: rgba(55, 57, 86, 0.45);
+}
 </style>

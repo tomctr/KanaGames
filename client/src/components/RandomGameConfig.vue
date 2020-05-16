@@ -1,12 +1,12 @@
 <template>
-  <v-card>
+  <v-card class="fill-height ma-10 d-flex flex-column" height="70%" id="randomCardConfig" dark>
       <v-row align="center" no-gutters>
         <v-col align="center" justify="center">
           <v-row no-gutters align="center">
             <v-col>Hiragana</v-col>
             <v-col>
               <v-switch
-                color="#90CFD4"
+                color="#90CFD4" 
                 v-model="isHiragana"
                 inset
                 v-on:change="onSwitchChange(caracEnum.MONOGRAPH, isHiragana)"
@@ -109,7 +109,7 @@
         </v-slider>
       </v-row>
       <v-row justify="center" align="end" no-gutters class="pb-2">
-        <v-btn @click="start" rounded color="#036273" class="white--text">Start Exam</v-btn>
+        <v-btn @click="start" rounded width="400px" height="60px" color="#1B1B2E" class="white--text">Start Exam</v-btn>
       </v-row>
   </v-card>
 </template>
@@ -183,5 +183,10 @@ export default {
 <style>
 .centered-input input {
   text-align: center;
+}
+
+#randomCardConfig{
+    background-color: rgba(55, 57, 86, 0.4);
+    border-radius: 50px
 }
 </style>
