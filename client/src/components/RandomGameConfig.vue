@@ -2,7 +2,7 @@
   <v-card class="fill-height ma-10 d-flex flex-column" height="70%" id="randomCardConfig" dark>
       <v-row align="center" no-gutters>
         <v-col align="center" justify="center">
-          <v-row no-gutters align="center">
+          <v-row no-gutters align="center" class="display-1">
             <v-col>Hiragana</v-col>
             <v-col>
               <v-switch
@@ -16,7 +16,7 @@
         </v-col>
         <v-divider vertical></v-divider>
         <v-col justify="center" align="center">
-          <v-row no-gutters align="center">
+          <v-row no-gutters align="center" class="display-1">
             <v-col>Katakana</v-col>
             <v-col>
               <v-switch
@@ -32,7 +32,7 @@
       <v-divider></v-divider>
       <v-row align="center" no-gutters>
         <v-col align="center" justify="center">
-          <v-row no-gutters align="center">
+          <v-row no-gutters align="center" class="display-1">
             <v-col>Diacritic</v-col>
             <v-col>
               <v-switch
@@ -46,7 +46,7 @@
         </v-col>
         <v-divider vertical></v-divider>
         <v-col justify="center" align="center">
-          <v-row no-gutters align="center">
+          <v-row no-gutters align="center" class="display-1">
             <v-col>Diacritic</v-col>
             <v-col>
               <v-switch
@@ -61,7 +61,7 @@
       </v-row>
       <v-row align="center" no-gutters>
         <v-col align="center" justify="center">
-          <v-row no-gutters align="center">
+          <v-row no-gutters align="center" class="display-1">
             <v-col>Diagraph</v-col>
             <v-col>
               <v-switch
@@ -75,7 +75,7 @@
         </v-col>
         <v-divider vertical></v-divider>
         <v-col justify="center" align="center">
-          <v-row no-gutters align="center">
+          <v-row no-gutters align="center" class="display-1">
             <v-col class="3B393C--text">Diagraph</v-col>
             <v-col>
               <v-switch
@@ -103,7 +103,7 @@
               class="mt-0 pt-0 pr-3 centered-input"
               hide-details
               single-line
-              style="width: 60px"
+              style="width: 60px;"
             ></v-text-field>
           </template>
         </v-slider>

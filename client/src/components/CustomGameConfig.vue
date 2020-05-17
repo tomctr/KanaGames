@@ -30,10 +30,10 @@
         </v-col>
       </v-row>
     </v-row>
-    <v-row no-gutters id="tabSelect">
-      <v-tabs grow >
-        <v-tab @click="clickTabHiragana" class="display-2">HIRAGANA</v-tab>
-        <v-tab @click="clickTabKatakana" class="display-2">KATAKANA</v-tab>
+    <v-row no-gutters>
+      <v-tabs grow dark class="fill-height">
+        <v-tab @click="clickTabHiragana" class="display-2"  id="tabSelect">HIRAGANA</v-tab>
+        <v-tab @click="clickTabKatakana" class="display-2"  id="tabSelect">KATAKANA</v-tab>
       </v-tabs>
     </v-row>
     <v-row no-gutters justify="center" align="end">
@@ -160,6 +160,6 @@ export default {
       background-color: rgba(55, 57, 86, 0.45);
 }
 #tabSelect{
-        background-color: rgba(55, 57, 86, 0.45);
+        background-color: rgba(55, 57, 86, 1);
 }
 </style>
