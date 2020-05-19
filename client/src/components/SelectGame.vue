@@ -26,7 +26,6 @@ export default {
 }
 #selectDiv{
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 </style>
