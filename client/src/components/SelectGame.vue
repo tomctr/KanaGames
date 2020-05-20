@@ -12,7 +12,8 @@ export default {
     gameCategory: [
         {title: "Random Game", link: "/game/random"},
         {title: "Custom Game", link: "/game/custom"},
-        {title: "Quizz", link: "/"}
+        {title: "Quizz", link: "/"},
+        {title: "Test", link:"/"}
     ]
   })
 };
