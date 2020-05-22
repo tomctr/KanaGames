@@ -1,9 +1,4 @@
 <template>
-  <v-row justify="center" align="center" class="fill-height ml-0 mr-0">
-    <PreGame v-on:start-game="startGame" v-show="showPreGame" :gametypeconfig="typegame" />
-    <KanaCard v-if="!showPreGame && !isEndGame" :config="config" v-on:end-game="endGame" />
-    <EndGame v-if="isEndGame" :examResult="examResult" />
-  </v-row>
 </template> 
 
 <script>
@@ -40,3 +35,6 @@ export default {
   }
 };
 </script>
+
+<style>
+</style>

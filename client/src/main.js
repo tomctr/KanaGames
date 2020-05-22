@@ -21,7 +21,8 @@ const router = new VueRouter({
     { path: '/profil', component: Profil },
     { path: '/kana', component: KanaDico },
     { path: '/game/custom', component: CustomGame },
-    { path: '/game/random', component: RandomGame }
+    { path: '/game/random', component: RandomGame },
+    { path: '/game', component: Game }
   ]
 })
 
