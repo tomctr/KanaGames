@@ -1,38 +1,25 @@
 <template>
+  <v-component is='actualComponent'></v-component>
 </template> 
 
 <script>
-import KanaCard from "./KanaCard";
-import PreGame from "./PreGame";
-import EndGame from "./EndGame";
+import RandomGameConfig from './RandomGameConfig';
+import CustomGameConfig from './CustomGameConfig';
+import KanaGame from './KanaCard';
+import EndGame from './EndGame';
 
 export default {
   name: "Game",
   components: {
-    KanaCard,
-    PreGame,
-    EndGame
   },
-  props: {
-    typegame: { type: String }
-  },
-
   data: () => ({
-    showPreGame: true,
-    isEndGame: false,
-    config: null,
-    examResult: null
+    actualComponent: null,
+    games: [
+      {name: "randomCard", pregame:"RandomGameConfig", game:"KanaGame", result:"EndGame"},
+      {name: "customCard", pregame:"CustomGameConfig", game:"", result:""}
+
+    ]
   }),
-  methods: {
-    startGame(param) {
-      this.showPreGame = false;
-      this.config = param;
-    },
-    endGame(examResult) {
-      this.isEndGame = true;
-      this.examResult = examResult;
-    }
-  }
 };
 </script>
 
