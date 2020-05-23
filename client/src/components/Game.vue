@@ -12,6 +12,7 @@ export default {
   name: "Game",
   components: {
   },
+  
   data: () => ({
     actualComponent: null,
     games: [
