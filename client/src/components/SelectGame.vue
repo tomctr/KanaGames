@@ -23,7 +23,8 @@ export default {
   data: () => ({
     gameCategory: [
       { title: "Random Game", link: "/game/random" },
-      { title: "Custom Game", link: "/game/custom" }
+      { title: "Custom Game", link: "/game/custom" },
+      { title: "Test", link: "/game" }
     ]
   })
 };
