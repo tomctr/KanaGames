@@ -1,5 +1,7 @@
 <template>
-  <v-component is='actualComponent'></v-component>
+  <v-component is='actualComponent'>
+
+  </v-component>
 </template> 
 
 <script>
@@ -16,11 +18,17 @@ export default {
   data: () => ({
     actualComponent: null,
     games: [
-      {name: "randomCard", pregame:"RandomGameConfig", game:"KanaGame", result:"EndGame"},
-      {name: "customCard", pregame:"CustomGameConfig", game:"", result:""}
+      {name: "random", pregame:"RandomGameConfig", game:"KanaGame", result:"EndGame"},
+      {name: "custom", pregame:"CustomGameConfig", game:"", result:""}
 
     ]
   }),
+  mounted(){
+    if (this.$route.params.typeGame == 'random'){
+      selectedGame = games.filter(game => game.name == 'random');
+      this.actualComponent = this.games.filter(game => game.name == 'random').pregame;
+    }
+  }
 };
 </script>
 
