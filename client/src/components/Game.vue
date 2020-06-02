@@ -1,5 +1,5 @@
 <template>
-  <v-component is='actualComponent'>
+  <v-component :is='actualComponent'>
 
   </v-component>
 </template> 
@@ -13,6 +13,8 @@ import EndGame from './EndGame';
 export default {
   name: "Game",
   components: {
+    RandomGameConfig,
+    CustomGameConfig,
   },
   
   data: () => ({
@@ -25,8 +27,8 @@ export default {
   }),
   mounted(){
     if (this.$route.params.typeGame == 'random'){
-      selectedGame = games.filter(game => game.name == 'random');
-      this.actualComponent = this.games.filter(game => game.name == 'random').pregame;
+      var selectedGame = this.games.filter(game => game.name == 'random');
+      this.actualComponent = selectedGame[0].pregame;
     }
   }
 };
